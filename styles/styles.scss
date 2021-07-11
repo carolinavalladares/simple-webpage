@@ -1,0 +1,122 @@
+// Google Fonts
+@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,900;1,700&display=swap");
+
+// =============
+// ==variables==
+// =============
+$dark-orange: #fc5404;
+$light-orange: #f9b208;
+$yellow: #f7fd04;
+$dark-blue: #0e1116;
+$breakpoint-tablet: 768px;
+
+// =============
+// ===mixins====
+// =============
+@mixin flex($direction) {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: $direction;
+}
+
+@mixin btn() {
+  background: rgba($dark-blue, 0.6);
+  padding: 10px 40px;
+  border: none;
+  border-radius: 3px;
+  outline: none;
+  color: white;
+  font-size: 16px;
+  font-weight: 400;
+  cursor: pointer;
+
+  &:hover,
+  &:focus {
+    background-color: rgba($dark-blue, 0.4);
+  }
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-weight: 300;
+  font-family: "Poppins", sans-serif;
+}
+
+html,
+body {
+  height: 100%;
+}
+
+.banner {
+  width: 100%;
+  height: 100vh;
+  position: relative;
+  background-image: url(../images/banner.jpg);
+  background-size: cover;
+  @include flex(row);
+  h1 {
+    color: white;
+    font-size: 35px;
+    font-weight: 400;
+  }
+  .btn {
+    @include btn();
+    position: absolute;
+    top: 20px;
+    right: 20px;
+  }
+}
+.content {
+  background-color: $dark-blue;
+  min-height: 100%;
+  color: white;
+  padding: 20px;
+  @media screen and (max-width: $breakpoint-tablet) {
+    min-height: fit-content;
+  }
+  .text {
+    text-align: center;
+    max-width: 900px;
+    margin: 50px auto;
+    font-size: 18px;
+    font-weight: 300;
+  }
+  .text h1 {
+    margin-bottom: 30px;
+    font-size: 24px;
+  }
+  .card-container {
+    @include flex(row);
+    gap: 90px;
+    padding: 30px 0;
+    flex-wrap: wrap;
+  }
+  .card {
+    @include flex(column);
+    background-color: rgba(white, 0.7);
+    color: $dark-blue;
+    width: 200px;
+    border-radius: 5px;
+    overflow: hidden;
+    cursor: pointer;
+    transition: all 0.2s ease-in-out;
+  }
+
+  .card:hover,
+  .card:focus {
+    transform: translate(0, -20px);
+    background-color: rgba(white, 0.8);
+  }
+
+  .card-text {
+    text-align: center;
+    padding: 10px;
+    font-size: 14px;
+  }
+  .card-text h2 {
+    font-size: 18px;
+  }
+}
